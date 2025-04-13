@@ -6,6 +6,9 @@ import HomePage from "@/pages/home-page";
 import StudentsPage from "@/pages/students-page";
 import LecturersPage from "@/pages/lecturers-page";
 import CoursesPage from "@/pages/courses-page";
+import SchedulesPage from "@/pages/schedules-page";
+import GradesPage from "@/pages/grades-page";
+import AttendancePage from "@/pages/attendance-page";
 
 function Router() {
   return (
@@ -16,6 +19,9 @@ function Router() {
       <Route path="/mahasiswa" component={StudentsPage} />
       <Route path="/dosen" component={LecturersPage} />
       <Route path="/mata-kuliah" component={CoursesPage} />
+      <Route path="/jadwal" component={SchedulesPage} />
+      <Route path="/nilai" component={GradesPage} />
+      <Route path="/kehadiran" component={AttendancePage} />
       <Route component={NotFound} />
     </Switch>
   );
