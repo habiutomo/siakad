@@ -64,6 +64,7 @@ import {
   CheckCircle2,
   Upload,
   BookOpen,
+  Trash2,
 } from 'lucide-react';
 
 // Interface untuk data kehadiran
