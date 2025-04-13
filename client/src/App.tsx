@@ -13,6 +13,7 @@ import FinancePage from "@/pages/finance-page";
 import DocumentsPage from "@/pages/documents-page";
 import PDDiktiPage from "@/pages/pddikti-page";
 import PDDiktiSettingsPage from "@/pages/pddikti-settings-page";
+import SettingsPage from "@/pages/settings-page";
 
 function Router() {
   return (
@@ -29,6 +30,8 @@ function Router() {
       <Route path="/keuangan" component={FinancePage} />
       <Route path="/dokumen" component={DocumentsPage} />
       <Route path="/pddikti" component={PDDiktiPage} />
+      <Route path="/pengaturan" component={SettingsPage} />
+      <Route path="/settings" component={SettingsPage} />
       <Route path="/settings/pddikti" component={PDDiktiSettingsPage} />
       <Route component={NotFound} />
     </Switch>
