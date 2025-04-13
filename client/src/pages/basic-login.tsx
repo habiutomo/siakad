@@ -7,11 +7,17 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
+  CardFooter,
 } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { BookOpen, Database, Users, User } from 'lucide-react';
+import { 
+  BookOpen, Database, Users, User, GraduationCap, 
+  School, CheckCircle2, Calendar, FileText 
+} from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { Label } from '@/components/ui/label';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 export default function BasicLoginPage() {
   const [activeTab, setActiveTab] = useState<string>('login');
@@ -168,121 +174,167 @@ export default function BasicLoginPage() {
               <TabsContent value="login">
                 <form onSubmit={handleLogin} className="space-y-4">
                   <div className="space-y-2">
-                    <label htmlFor="username" className="text-sm font-medium">
-                      Username
-                    </label>
-                    <Input
-                      id="username"
-                      value={username}
-                      onChange={(e) => setUsername(e.target.value)}
-                      placeholder="Username Anda"
-                      required
-                    />
+                    <Label htmlFor="username">Username</Label>
+                    <div className="relative">
+                      <User className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                      <Input
+                        id="username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        placeholder="Username Anda"
+                        className="pl-10"
+                        required
+                      />
+                    </div>
                   </div>
                   <div className="space-y-2">
-                    <label htmlFor="password" className="text-sm font-medium">
-                      Password
-                    </label>
-                    <Input
-                      id="password"
-                      type="password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      placeholder="Password Anda"
-                      required
-                    />
+                    <div className="flex items-center justify-between">
+                      <Label htmlFor="password">Password</Label>
+                      <a href="#" className="text-xs text-primary hover:underline">
+                        Lupa Password?
+                      </a>
+                    </div>
+                    <div className="relative">
+                      <FileText className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                      <Input
+                        id="password"
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="Password Anda"
+                        className="pl-10"
+                        required
+                      />
+                    </div>
                   </div>
-                  <Button className="w-full mt-4" type="submit" disabled={isLoading}>
-                    {isLoading ? 'Loading...' : 'Login'}
+                  <Button 
+                    className="w-full mt-6" 
+                    size="lg"
+                    type="submit" 
+                    disabled={isLoading}
+                  >
+                    {isLoading ? 'Memproses...' : 'Masuk ke Sistem'}
                   </Button>
                 </form>
+                <div className="mt-6 text-center text-sm text-muted-foreground">
+                  <p>Belum memiliki akun? <span 
+                    className="text-primary font-medium hover:underline cursor-pointer"
+                    onClick={() => setActiveTab('register')}
+                  >
+                    Daftar Sekarang
+                  </span></p>
+                </div>
               </TabsContent>
 
               <TabsContent value="register">
                 <form onSubmit={handleRegister} className="space-y-4">
                   <div className="space-y-2">
-                    <label htmlFor="fullName" className="text-sm font-medium">
-                      Nama Lengkap
-                    </label>
-                    <Input
-                      id="fullName"
-                      value={fullName}
-                      onChange={(e) => setFullName(e.target.value)}
-                      placeholder="Nama lengkap Anda"
-                      required
-                    />
+                    <Label htmlFor="fullName">Nama Lengkap</Label>
+                    <div className="relative">
+                      <User className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                      <Input
+                        id="fullName"
+                        value={fullName}
+                        onChange={(e) => setFullName(e.target.value)}
+                        placeholder="Nama lengkap Anda"
+                        className="pl-10"
+                        required
+                      />
+                    </div>
                   </div>
                   <div className="space-y-2">
-                    <label htmlFor="regUsername" className="text-sm font-medium">
-                      Username
-                    </label>
-                    <Input
-                      id="regUsername"
-                      value={regUsername}
-                      onChange={(e) => setRegUsername(e.target.value)}
-                      placeholder="Username untuk login"
-                      required
-                    />
+                    <Label htmlFor="regUsername">Username</Label>
+                    <div className="relative">
+                      <CheckCircle2 className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                      <Input
+                        id="regUsername"
+                        value={regUsername}
+                        onChange={(e) => setRegUsername(e.target.value)}
+                        placeholder="Username untuk login"
+                        className="pl-10"
+                        required
+                      />
+                    </div>
                   </div>
                   <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium">
-                      Email
-                    </label>
-                    <Input
-                      id="email"
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Email Anda"
-                      required
-                    />
+                    <Label htmlFor="email">Email</Label>
+                    <div className="relative">
+                      <FileText className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                      <Input
+                        id="email"
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Email Anda"
+                        className="pl-10"
+                        required
+                      />
+                    </div>
                   </div>
                   <div className="space-y-2">
-                    <label htmlFor="role" className="text-sm font-medium">
-                      Peran
-                    </label>
-                    <select 
-                      id="role" 
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md"
-                      value={role}
-                      onChange={(e) => setRole(e.target.value)}
+                    <Label htmlFor="role">Peran</Label>
+                    <Select 
+                      value={role} 
+                      onValueChange={setRole}
                     >
-                      <option value="student">Mahasiswa</option>
-                      <option value="faculty">Dosen</option>
-                      <option value="staff">Staff</option>
-                      <option value="admin">Admin</option>
-                    </select>
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder="Pilih peran Anda" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="student">Mahasiswa</SelectItem>
+                        <SelectItem value="faculty">Dosen</SelectItem>
+                        <SelectItem value="staff">Staff</SelectItem>
+                        <SelectItem value="admin">Admin</SelectItem>
+                      </SelectContent>
+                    </Select>
                   </div>
                   <div className="space-y-2">
-                    <label htmlFor="regPassword" className="text-sm font-medium">
-                      Password
-                    </label>
-                    <Input
-                      id="regPassword"
-                      type="password"
-                      value={regPassword}
-                      onChange={(e) => setRegPassword(e.target.value)}
-                      placeholder="Password minimal 6 karakter"
-                      required
-                    />
+                    <Label htmlFor="regPassword">Password</Label>
+                    <div className="relative">
+                      <FileText className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                      <Input
+                        id="regPassword"
+                        type="password"
+                        value={regPassword}
+                        onChange={(e) => setRegPassword(e.target.value)}
+                        placeholder="Password minimal 6 karakter"
+                        className="pl-10"
+                        required
+                      />
+                    </div>
                   </div>
                   <div className="space-y-2">
-                    <label htmlFor="confirmPassword" className="text-sm font-medium">
-                      Konfirmasi Password
-                    </label>
-                    <Input
-                      id="confirmPassword"
-                      type="password"
-                      value={confirmPassword}
-                      onChange={(e) => setConfirmPassword(e.target.value)}
-                      placeholder="Konfirmasi password Anda"
-                      required
-                    />
+                    <Label htmlFor="confirmPassword">Konfirmasi Password</Label>
+                    <div className="relative">
+                      <CheckCircle2 className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                      <Input
+                        id="confirmPassword"
+                        type="password"
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        placeholder="Konfirmasi password Anda"
+                        className="pl-10"
+                        required
+                      />
+                    </div>
                   </div>
-                  <Button className="w-full mt-4" type="submit" disabled={isRegLoading}>
-                    {isRegLoading ? 'Loading...' : 'Register'}
+                  <Button 
+                    className="w-full mt-6" 
+                    size="lg"
+                    type="submit" 
+                    disabled={isRegLoading}
+                  >
+                    {isRegLoading ? 'Memproses...' : 'Daftar Akun Baru'}
                   </Button>
                 </form>
+                <div className="mt-6 text-center text-sm text-muted-foreground">
+                  <p>Sudah memiliki akun? <span 
+                    className="text-primary font-medium hover:underline cursor-pointer"
+                    onClick={() => setActiveTab('login')}
+                  >
+                    Login Sekarang
+                  </span></p>
+                </div>
               </TabsContent>
             </Tabs>
           </CardContent>
@@ -290,41 +342,65 @@ export default function BasicLoginPage() {
       </div>
 
       {/* Right Side - Hero Image/Information */}
-      <div className="hidden md:flex flex-1 items-center justify-center bg-primary p-12 text-white">
+      <div className="hidden md:flex flex-1 items-center justify-center bg-gradient-to-br from-primary to-blue-700 p-12 text-white">
         <div className="max-w-md">
-          <h1 className="text-3xl font-bold mb-6">Sistem Informasi Akademik</h1>
-          <p className="text-lg mb-8">
-            Platform lengkap untuk manajemen akademik perguruan tinggi dengan integrasi PDDikti.
+          <div className="flex items-center mb-6">
+            <School className="h-10 w-10 mr-4 text-white" />
+            <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-200">
+              SIAKAD PDDikti
+            </h1>
+          </div>
+          
+          <p className="text-xl mb-10 font-light">
+            Platform komprehensif untuk manajemen akademik perguruan tinggi dengan integrasi lengkap PDDikti.
           </p>
-          <div className="grid grid-cols-2 gap-6">
-            <div className="flex items-start">
-              <Users className="h-6 w-6 mr-2" />
-              <div>
-                <h3 className="font-medium">Manajemen Mahasiswa</h3>
-                <p className="text-sm opacity-80">Kelola data mahasiswa dengan mudah</p>
+          
+          <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20 mb-8">
+            <h3 className="text-lg font-medium mb-4">Fitur Utama</h3>
+            <div className="space-y-4">
+              <div className="flex items-center">
+                <div className="flex items-center justify-center h-8 w-8 rounded-full bg-white/20 mr-3">
+                  <Users className="h-4 w-4" />
+                </div>
+                <div>
+                  <h4 className="font-medium">Manajemen Data Terpadu</h4>
+                  <p className="text-sm opacity-80">Kelola mahasiswa, dosen, dan mata kuliah</p>
+                </div>
+              </div>
+              <div className="flex items-center">
+                <div className="flex items-center justify-center h-8 w-8 rounded-full bg-white/20 mr-3">
+                  <Calendar className="h-4 w-4" />
+                </div>
+                <div>
+                  <h4 className="font-medium">Penjadwalan & Kehadiran</h4>
+                  <p className="text-sm opacity-80">Sistem absensi dan jadwal otomatis</p>
+                </div>
+              </div>
+              <div className="flex items-center">
+                <div className="flex items-center justify-center h-8 w-8 rounded-full bg-white/20 mr-3">
+                  <GraduationCap className="h-4 w-4" />
+                </div>
+                <div>
+                  <h4 className="font-medium">Administrasi Akademik</h4>
+                  <p className="text-sm opacity-80">Nilai, transkip, dan kelengkapan dokumen</p>
+                </div>
+              </div>
+              <div className="flex items-center">
+                <div className="flex items-center justify-center h-8 w-8 rounded-full bg-white/20 mr-3">
+                  <Database className="h-4 w-4" />
+                </div>
+                <div>
+                  <h4 className="font-medium">Sinkronisasi PDDikti</h4>
+                  <p className="text-sm opacity-80">Terintegrasi langsung dengan Neo Feeder</p>
+                </div>
               </div>
             </div>
-            <div className="flex items-start">
-              <User className="h-6 w-6 mr-2" />
-              <div>
-                <h3 className="font-medium">Data Dosen</h3>
-                <p className="text-sm opacity-80">Administrasi dosen terintegrasi</p>
-              </div>
-            </div>
-            <div className="flex items-start">
-              <BookOpen className="h-6 w-6 mr-2" />
-              <div>
-                <h3 className="font-medium">Kurikulum</h3>
-                <p className="text-sm opacity-80">Pengelolaan mata kuliah & jadwal</p>
-              </div>
-            </div>
-            <div className="flex items-start">
-              <Database className="h-6 w-6 mr-2" />
-              <div>
-                <h3 className="font-medium">Integrasi PDDikti</h3>
-                <p className="text-sm opacity-80">Sinkronisasi data otomatis</p>
-              </div>
-            </div>
+          </div>
+          
+          <div className="text-center">
+            <p className="text-sm font-light">
+              © 2025 SIAKAD PDDikti • Solusi Terdepan untuk Perguruan Tinggi Indonesia
+            </p>
           </div>
         </div>
       </div>
