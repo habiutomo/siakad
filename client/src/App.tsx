@@ -14,6 +14,7 @@ import DocumentsPage from "@/pages/documents-page";
 import PDDiktiPage from "@/pages/pddikti-page";
 import PDDiktiSettingsPage from "@/pages/pddikti-settings-page";
 import SettingsPage from "@/pages/settings-page";
+import ReportsPage from "@/pages/reports-page";
 
 function Router() {
   return (
@@ -33,6 +34,8 @@ function Router() {
       <Route path="/pengaturan" component={SettingsPage} />
       <Route path="/settings" component={SettingsPage} />
       <Route path="/settings/pddikti" component={PDDiktiSettingsPage} />
+      <Route path="/laporan" component={ReportsPage} />
+      <Route path="/reports" component={ReportsPage} />
       <Route component={NotFound} />
     </Switch>
   );
