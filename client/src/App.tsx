@@ -12,6 +12,7 @@ import AttendancePage from "@/pages/attendance-page";
 import FinancePage from "@/pages/finance-page";
 import DocumentsPage from "@/pages/documents-page";
 import PDDiktiPage from "@/pages/pddikti-page";
+import PDDiktiSettingsPage from "@/pages/pddikti-settings-page";
 
 function Router() {
   return (
@@ -28,6 +29,7 @@ function Router() {
       <Route path="/keuangan" component={FinancePage} />
       <Route path="/dokumen" component={DocumentsPage} />
       <Route path="/pddikti" component={PDDiktiPage} />
+      <Route path="/settings/pddikti" component={PDDiktiSettingsPage} />
       <Route component={NotFound} />
     </Switch>
   );

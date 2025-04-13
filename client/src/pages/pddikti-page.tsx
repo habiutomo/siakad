@@ -1126,7 +1126,7 @@ export default function PDDiktiPage() {
               </div>
             </CardContent>
             <CardFooter>
-              <Button variant="outline" className="w-full" onClick={() => window.open('/settings/pddikti', '_blank')}>
+              <Button variant="outline" className="w-full" onClick={() => window.location.href = '/settings/pddikti'}>
                 <SettingsIcon className="h-4 w-4 mr-2" /> Konfigurasi
               </Button>
             </CardFooter>
