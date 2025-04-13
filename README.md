@@ -2,7 +2,7 @@
 
 SIAKAD adalah aplikasi sistem informasi akademik komprehensif untuk perguruan tinggi di Indonesia dengan integrasi lengkap ke Neo Feeder PDDikti. Aplikasi ini dikembangkan menggunakan teknologi modern dan memberikan solusi manajemen akademik yang terintegrasi.
 
-![SIAKAD Dashboard](https://example.com/siakad-dashboard.png)
+![SIAKAD Dashboard](1.png)
 
 ## Fitur Utama
 
